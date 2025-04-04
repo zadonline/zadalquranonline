@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>free eval</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #FFD700, #FFAA00);
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: #FFAA00;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #CC8800;
+}
+
+
+
+
+
+</style>
+<body>
+    <div class="container">
+        <h2>free evaluation form</h2>
+        <form id="evaluationForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="whatsapp">WhatsApp Number:</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <option value="UAE">UAE</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Send Data</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("evaluationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let whatsapp = document.getElementById("whatsapp").value;
+            let email = document.getElementById("email").value;
+            let country = document.getElementById("country").value;
+
+            let message = `New Free Evaluation Request:%0AName: ${name}%0AWhatsApp: ${whatsapp}%0AEmail: ${email}%0ACountry: ${country}`;
+            
+            let whatsappURL = `https://wa.me/201113691873?text=${message}`; // استبدل 1234567890 برقم الأكاديمية
+            let emailAddress = "zadalquran25@gmail.com"; // استبدل بالإيميل الخاص بالأكاديمية
+            let mailtoLink = `mailto:${emailAddress}?subject=Free Evaluation Request&body=${message.replace(/%0A/g, "\n")}`;
+
+            window.open(whatsappURL, "_blank");
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+</html>

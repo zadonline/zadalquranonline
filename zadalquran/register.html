@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration | Zad Al Quran Academy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #FFD700, #FFCC00);
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background: #333;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: center;
+        }
+        .logo {
+            width: 150px;
+            display: block;
+            margin: 20px auto;
+        }
+        .video-section {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+        }
+        .video-section iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 25px; /* الحواف الدائرية */
+        }
+        button {
+            background: #ffcc33;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+        button:hover {
+            background: #e6b800;
+        }
+        #confirmation {
+            display: none;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔹 هيدر الصفحة -->
+    <header>
+        <div class="logo">
+            <img src="  images/WhatsApp Image 2025-03-17 at 14.22.37_5fa2b47b.jpg" alt="Zad Al Quran Logo" class="logo">
+        </div>
+    </header>
+
+    <!-- 🔹 قسم الفيديو -->
+    <div class="video-section">
+        <iframe src=" video/WhatsApp Video 2025-03-08 at 4.18.01 AM.mp4  " frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- 🔹 نموذج التسجيل -->
+    <div class="container">
+        <h2>register Now</h2>
+        <form id="registrationForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <option value="UAE">UAE</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Other">Other</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+
+            </select>
+
+            <label for="course">Select Course:</label>
+            <select id="course" name="course" required>
+                <option value="" disabled selected>Select a course</option>
+                <option value="Tajweed">Tajweed Course</option>
+                <option value="Memorization">Quran Memorization</option>
+                <option value="Arabic">Arabic Language</option>
+                <option value="Islamic">Islamic Studies</option>
+                
+            </select>
+
+            <button type="submit">register</button>
+        </form>
+        <p id="confirmation">registration successful! ✅</p>
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let country = document.getElementById("country").value;
+            let course = document.getElementById("course").value;
+
+            let message = `New Registration Request:%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ACountry: ${country}%0ACourse: ${course}`;
+
+            // إرسال إلى واتساب
+            let whatsappURL = `https://wa.me/201113691873?text=${message}`; // استبدل برقم الأكاديمية
+
+            // إرسال إلى البريد الإلكتروني
+            let emailAddress = "zadalquran25@gmail.com"; // استبدل بإيميل الأكاديمية
+            let mailtoLink = `mailto:${emailAddress}?subject=New Registration&body=${message.replace(/%0A/g, "\n")}`;
+
+            window.open(whatsappURL, "_blank");
+            window.location.href = mailtoLink;
+
+            document.getElementById("confirmation").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("confirmation").style.display = "none";
+                document.getElementById("registrationForm").reset();
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
+

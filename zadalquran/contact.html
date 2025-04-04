@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact | Zad Al Quran Academy</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #FFD700, #FFCC00);
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background: #222;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .hero {
+            padding: 100px 20px 50px;
+            color: white;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+        }
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .info-box:hover {
+            transform: scale(1.1);
+        }
+        .info-box i {
+            font-size: 30px;
+            color: #ffcc33;
+        }
+        .contact-form {
+            background: white;
+            padding: 40px;
+            margin: 40px auto;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+        }
+        button {
+            background: #ffcc33;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+        button:hover {
+            background: #e6b800;
+        }
+        #confirmation {
+            display: none;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔹 هيدر الصفحة -->
+    <header>
+        <div class="logo">Zad Al Quran Academy</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact-us.html" class="active">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 🔹 العنوان الرئيسي -->
+    <section class="hero">
+        <h1>contact</h1>
+        <p>Have any questions? Feel free to reach out to us!</p>
+    </section>
+
+    <!-- 🔹 معلومات الاتصال -->
+    <section class="contact-info">
+        <div class="info-box">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:contact@zadquran.com">contact@zadquran.com</a></p>
+        </div>
+        <div class="info-box">
+            <i class="fas fa-phone"></i>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/201113691873" target="_blank">+201113691873</a></p>
+        </div>
+        <div class="info-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Location</h3>
+            <p>Cairo, Egypt</p>
+        </div>
+    </section>
+
+    <!-- 🔹 نموذج الاتصال -->
+    <section class="contact-form">
+        <h2>Send us a message</h2>
+        <form id="contactForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="whatsapp">WhatsApp Number:</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="confirmation">Message sent successfully! ✅</p>
+    </section>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let whatsapp = document.getElementById("whatsapp").value;
+            let message = document.getElementById("message").value;
+
+            let text = `New Contact Form Submission:%0AName: ${name}%0AEmail: ${email}%0AWhatsApp: ${whatsapp}%0AMessage: ${message}`;
+            
+            let whatsappURL = `https://wa.me/201113691873?text=${text}`;
+            let emailAddress = "zadalquran25@gmail.com";
+            let mailtoLink = `mailto:${emailAddress}?subject=Contact Request&body=${text.replace(/%0A/g, "\n")}`;
+
+            window.open(whatsappURL, "_blank");
+            window.location.href = mailtoLink;
+
+            document.getElementById("confirmation").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
